@@ -52,6 +52,15 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Jos
   .gate { transition: none; }
 }
 
+.fade-in { opacity: 0; }
+.go .fade-in { animation: fade 1.4s ease forwards; animation-delay: var(--d, 1s); }
+@keyframes fade { to { opacity: 1; } }
+
+.bounce { animation: bounce 1.8s ease-in-out infinite; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
 /* :root {
   --text: #6b6375;
   --text-h: #08060d;

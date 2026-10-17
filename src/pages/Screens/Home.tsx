@@ -7,7 +7,7 @@ export default function Home({ go }: { go: boolean }) {
   return (
     <main className="block md:hidden h-full  overflow-y-auto">
       {/* Hero */}
-      <section className={`${go ? "go" : ""} relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[var(--ink)] px-6 text-center text-[var(--blush)]`}>
+      <section className={`${go ? "go" : ""} relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-[var(--ink)] px-6 text-center text-[var(--blush)]`}>
       
         {Array.from({ length: 14 }).map((_, i) => (
           <span key={i} className="dust" style={{ left: `${(i * 7 + 5) % 100}%`, animationDelay: `${i * 0.9}s`, animationDuration: `${9 + (i % 5) * 2}s` }} />
@@ -20,9 +20,22 @@ export default function Home({ go }: { go: boolean }) {
         </h1>
         <p className="fade-in mt-10 text-xl sm:text-2xl" style={{ animationDelay: "1.8s" }}>{w.displayDate}</p>
         <p className="fade-in mt-1 opacity-80" style={{ animationDelay: "2s" }}>{w.venue}, {w.city}</p>
+       <button
+            onClick={() =>
+                document.getElementById("countdown")?.scrollIntoView({ behavior: "smooth" })
+            }
+            aria-label="Scroll down to the invitation details"
+            className="fade-in mt-14 flex flex-col items-center gap-1 text-[var(--gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--gold)]"
+            style={{ animationDelay: "2.6s" }}
+            >
+            <span className="text-sm">Scroll down</span>
+            <svg className="bounce h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 9l6 6 6-6" />
+            </svg>
+            </button>
       </section>
  {/* Countdown */}
-      <section className="bg-[var(--ink-soft)] px-6 py-20 text-[var(--blush)]">
+      <section id="countdown" className="bg-[var(--ink-soft)] px-6 py-20 text-[var(--blush)]">
         <Reveal><Countdown to={w.date} /></Reveal>
       </section>
  

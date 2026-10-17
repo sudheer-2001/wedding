@@ -4,6 +4,7 @@ import Home from "./Home";
 import MusicButton from "../../components/MusicButton";
 import song from "../../assets/kalyanam.mp3";
 
+
 const SplashScreen = () => {
     const {state, handler} = useSplashScreen();
     return (

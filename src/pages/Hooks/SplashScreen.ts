@@ -1,5 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 
+const autoScroll = () => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let cancelled = false;
+  const stop = () => { cancelled = true; };
+  window.addEventListener("wheel", stop, { once: true, passive: true });
+  window.addEventListener("touchstart", stop, { once: true, passive: true });
+  window.addEventListener("keydown", stop, { once: true });
+
+  // wait for the names to finish animating (about 3 seconds)
+  setTimeout(() => {
+    if (!cancelled) {
+      window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+    }
+  }, 3500);
+};
+
 const KEY = "wedding-opened";
 const read = () => { try { return sessionStorage.getItem(KEY) === "1"; } catch { return false; } };
 const write = () => { try { sessionStorage.setItem(KEY, "1"); } catch { /* ignore */ } };
@@ -14,6 +31,7 @@ export const useSplashScreen = () => {
       setOpened(true);
        write();
       audio.current?.play().then(() => setPlaying(true)).catch(() => {});
+      //  autoScroll();
     };
     const toggle = () => {
       if (playing) { audio.current.pause(); setPlaying(false); }
@@ -24,7 +42,7 @@ export const useSplashScreen = () => {
     useEffect(() => {
     if (read()) audio.current?.play().then(() => setPlaying(true)).catch(() => {});
   }, []);
-  
+
     return {
         state: {
             audio,
