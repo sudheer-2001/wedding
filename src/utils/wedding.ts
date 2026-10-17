@@ -8,8 +8,8 @@ export const wedding = {
   venue: "Sri Sangameshwara Function Hall",
   address: "12 Lake View Road, Ananthapur",
   mapUrl: "https://maps.google.com/?q=Ananthapur",
-  whatsapp: "917660811237", // country code + number, no "+"
-  // whatsapp: "919490337530", // country code + number, no "+"
+  // whatsapp: "917660811237", // country code + number, no "+"
+  whatsapp: "919490337530", // country code + number, no "+"
   story: [
     "We met over a cup of filter coffee that went cold because neither of us wanted to stop talking.",
     "Five years, two cities and one very opinionated dog later, we're getting married, and we'd love you to be there.",
