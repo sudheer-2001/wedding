@@ -25,6 +25,7 @@ export const useSplashScreen = () => {
     const audio = useRef(null) as any;
     const [opened, setOpened] = useState(read);
     const [playing, setPlaying] = useState(false);
+    const [anim, setAnim] = useState(false);
   
     // Browsers block autoplay, so the click on "Open invitation" starts the music.
     const open = () => {
@@ -49,7 +50,8 @@ export const useSplashScreen = () => {
             opened,
             playing,
             open,
-            toggle
+            toggle,
+            anim
         },
         handler: {
             open,

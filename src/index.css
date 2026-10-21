@@ -9,6 +9,35 @@
   --gold: #c9a24b;
   --rose: #a8566a;
 }
+
+
+.box1 {
+  /* margin: 24px auto 0;
+  background:#f3e3d6;
+  border-radius: 12px; */
+  position: fixed;
+  top: 24px;
+  left: 0;
+  z-index: 50;
+  width: 40px;
+  height: 40px;
+  transition: transform 4s cubic-bezier(.7, 0, .2, 1);
+}
+
+.box1 img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.box1.open {
+  transform: translateX(calc(100vw - 40px)) rotate(360deg);
+}
+
+.dance-white {
+    filter: brightness(0) invert(1);
+}
+
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Jost", system-ui, sans-serif; }
 .font-display { font-family: "Cormorant Garamond", Georgia, serif; }
 
@@ -61,6 +90,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Jos
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(8px); }
 }
+
 /* :root {
   --text: #6b6375;
   --text-h: #08060d;

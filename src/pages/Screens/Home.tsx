@@ -2,20 +2,36 @@ import { Link } from "react-router-dom";
 import { wedding as w } from "../../utils/wedding";
 import Countdown from "../../components/Countdown";
 import Reveal from "../../components/Reveal";
+import { useEffect, useState } from "react";
+import dance from "./../../assets/dance.png";
 
 export default function Home({ go }: { go: boolean }) {
+    const [anim, setAnim] = useState(false);
+
+    useEffect(() => {
+        const startInterval = setInterval(() => {
+            setAnim((prev) => !prev);
+        }, 4000)
+
+        return () => clearInterval(startInterval);
+    }, [])
   return (
     <main className="block md:hidden h-full  overflow-y-auto">
       {/* Hero */}
-      <section className={`${go ? "go" : ""} relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-[var(--ink)] px-6 text-center text-[var(--blush)]`}>
       
+      <section className={`${go ? "go" : ""} relative overflow-hidden items-center justify-center px-6 text-center  flex min-h-[100svh]  flex-col bg-[var(--ink)]  text-[var(--blush)] `}>
+        <div className={`box1 ${anim ? "open" : ""}`} style={{alignItems: 'start', justifyContent: 'start'}}>
+            <img className="dance-white" src={dance} width={40} height={40} color="#FFFFFF"  alt="Dancing illustration"/>
+        </div>
+        
+
         {Array.from({ length: 14 }).map((_, i) => (
           <span key={i} className="dust" style={{ left: `${(i * 7 + 5) % 100}%`, animationDelay: `${i * 0.9}s`, animationDuration: `${9 + (i % 5) * 2}s` }} />
         ))}
         <p className="fade-in mb-6 text-lg text-[var(--gold)]" style={{ animationDelay: "0.2s" }}>We're getting married</p>
         <h1 className="font-display text-[clamp(3.5rem,14vw,10rem)] font-light leading-[0.95]">
           <span className="name-line"><span className="name-in" style={{ animationDelay: "0.4s" }}>{w.groom}</span></span>
-          <span className="name-line italic text-[var(--gold)]"><span className="name-in" style={{ animationDelay: "0.7s" }}>&amp;</span></span>
+          <span className="name-line italic text-[var(--gold)]"><span className="name-in" style={{ animationDelay: "0.7s" }}>WEDS</span></span>
           <span className="name-line"><span className="name-in" style={{ animationDelay: "1s" }}>{w.bride}</span></span>
         </h1>
         <p className="fade-in mt-10 text-xl sm:text-2xl" style={{ animationDelay: "1.8s" }}>{w.displayDate}</p>
