@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import dance from "./../../assets/dance.png";
 
 export default function Home({ go }: { go: boolean }) {
-    const [anim, setAnim] = useState(true);
+    const [anim, setAnim] = useState(false);
 
     useEffect(() => {
+        setAnim(true);
         const startInterval = setInterval(() => {
             setAnim((prev) => !prev);
         }, 4000)
