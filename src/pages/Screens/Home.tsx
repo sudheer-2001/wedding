@@ -31,7 +31,7 @@ export default function Home({ go }: { go: boolean }) {
           <span key={i} className="dust" style={{ left: `${(i * 7 + 5) % 100}%`, animationDelay: `${i * 0.9}s`, animationDuration: `${9 + (i % 5) * 2}s` }} />
         ))}
         <p className="fade-in mb-6 text-lg text-[var(--gold)]" style={{ animationDelay: "0.2s" }}>We're getting married</p>
-        <h1 className="font-display text-[clamp(3.5rem,14vw,10rem)] font-light leading-[0.95]">
+        <h1 className="font-display text-[clamp(2.5rem,14vw,10rem)] font-light leading-[0.95]">
           <span className="name-line"><span className="name-in" style={{ animationDelay: "0.4s" }}>{w.groom}</span></span>
           <span className="name-line italic text-[var(--gold)]"><span className="name-in" style={{ animationDelay: "0.7s" }}>WEDS</span></span>
           <span className="name-line"><span className="name-in" style={{ animationDelay: "1s" }}>{w.bride}</span></span>
