@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { wedding as w } from "../../utils/wedding";
 import Countdown from "../../components/Countdown";
 import Reveal from "../../components/Reveal";
@@ -7,6 +7,7 @@ import dance from "./../../assets/dance.png";
 
 export default function Home({ go }: { go: boolean }) {
     const [anim, setAnim] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         setAnim(true);
@@ -15,7 +16,7 @@ export default function Home({ go }: { go: boolean }) {
         }, 4000)
 
         return () => clearInterval(startInterval);
-    }, [])
+    }, [location.key])
   return (
     <main className="block md:hidden h-full  overflow-y-auto">
       {/* Hero */}
