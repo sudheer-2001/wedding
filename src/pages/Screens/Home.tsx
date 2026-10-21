@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import dance from "./../../assets/dance.png";
 
 export default function Home({ go }: { go: boolean }) {
-    const [anim, setAnim] = useState(false);
+    const [anim, setAnim] = useState(true);
 
     useEffect(() => {
         const startInterval = setInterval(() => {

@@ -9,15 +9,15 @@ import { useEffect, useState } from "react";
 
 const SplashScreen = () => {
     const {state, handler} = useSplashScreen();
-    const [anim, setAnim] = useState(false);
+    // const [anim, setAnim] = useState(false);
     
-        useEffect(() => {
-            const startInterval = setInterval(() => {
-                setAnim((prev) => !prev);
-            }, 4000)
+        // useEffect(() => {
+        //     const startInterval = setInterval(() => {
+        //         setAnim((prev) => !prev);
+        //     }, 1000)
     
-            return () => clearInterval(startInterval);
-        }, [])
+        //     return () => clearInterval(startInterval);
+        // }, [])
     return (
         <>
             <audio ref={state.audio} src={song} loop preload="auto" />
