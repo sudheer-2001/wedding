@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { wedding as w } from "../utils/wedding";
+import { useWedding } from "../utils/WeddingContext";
 
 export default function Rsvp() {
+  const w = useWedding();
   const [f, setF] = useState({ name: "", attending: "yes", guests: 1, message: "" });
   const set = (k: any) => (e: any) => setF({ ...f, [k]: e.target.value });
 
@@ -16,7 +17,7 @@ export default function Rsvp() {
 
   return (
     <main className="mx-auto min-h-screen max-w-md px-6 py-16">
-      <Link to="/" className="underline">Back to the invitation</Link>
+      <Link to=".." className="underline">Back to the invitation</Link>
       <h1 className="font-display mt-8 text-5xl">Will you join us?</h1>
       <p className="mt-3">Please reply so we can plan for you.</p>
       <form onSubmit={send} className="mt-8 space-y-5">

@@ -44,6 +44,28 @@ export const useSplashScreen = () => {
     if (read()) audio.current?.play().then(() => setPlaying(true)).catch(() => {});
   }, []);
 
+  useEffect(() => {
+  let pausedByHide = false;
+
+  const onVisibility = () => {
+    const a = audio.current;
+    if (!a) return;
+
+    if (document.hidden) {
+      if (!a.paused) {
+        a.pause();
+        pausedByHide = true;
+      }
+    } else if (pausedByHide) {
+      pausedByHide = false;
+      a.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    }
+  };
+
+  document.addEventListener("visibilitychange", onVisibility);
+  return () => document.removeEventListener("visibilitychange", onVisibility);
+}, []);
+
     return {
         state: {
             audio,

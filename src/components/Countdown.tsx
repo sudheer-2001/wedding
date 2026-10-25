@@ -17,10 +17,10 @@ export default function Countdown({ to }: { to: any }) {
     return () => clearInterval(id);
   }, [to]);
   return (
-    <div className="flex justify-center gap-6 sm:gap-12">
+    <div className="flex justify-center gap-6 text-5xl">
       {Object.entries(t).map(([label, v]) => (
         <div key={label} className="text-center">
-          <div className="font-display text-5xl sm:text-7xl tabular-nums">{String(v).padStart(2, "0")}</div>
+          <div className="font-display text-5xl text-5xl tabular-nums">{String(v).padStart(2, "0")}</div>
           <div className="mt-1 text-sm text-[var(--gold)]">{label}</div>
         </div>
       ))}
